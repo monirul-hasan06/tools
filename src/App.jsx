@@ -130,6 +130,12 @@ function App() {
           <a href="#featured" className="nav-link mono-ibm">Tools</a>
           <a href="#categories" className="nav-link mono-ibm">Categories</a>
           <a href="#about" className="nav-link mono-ibm">About</a>
+          <a href="#categories" className="nav-search-link" aria-label="Search tools">
+            <svg viewBox="0 0 24 24" fill="none">
+              <circle cx="11" cy="11" r="6.5" stroke="currentColor" strokeWidth="1.8" />
+              <path d="M16 16l4.5 4.5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+            </svg>
+          </a>
           <button className="theme-toggle" onClick={toggleTheme} type="button" aria-label="Toggle theme">
             <span className="theme-icon" aria-hidden="true">
               {theme === 'dark' ? (
@@ -215,7 +221,8 @@ function App() {
             <label className="search-box">
               <span className="search-icon" aria-hidden="true">
                 <svg viewBox="0 0 24 24" fill="none">
-                  <path d="M11 4a7 7 0 1 0 0 14 7 7 0 0 0 0-14Zm0 0 8 8" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+                  <circle cx="11" cy="11" r="6.5" stroke="currentColor" strokeWidth="1.8" />
+                  <path d="M16 16l4.5 4.5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
                 </svg>
               </span>
               <input
