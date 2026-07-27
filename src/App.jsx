@@ -178,11 +178,11 @@ function App() {
           </div>
           <div className="stats-card">
             <div>
-              <strong>9+</strong>
+              <strong>60+</strong>
               <span>AI tools</span>
             </div>
             <div>
-              <strong>6</strong>
+              <strong>6+</strong>
               <span>Categories</span>
             </div>
             <div>
