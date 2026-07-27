@@ -1,12 +1,14 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 
 const useTheme = () => {
-  const [theme, setTheme] = useState(() => {
-    if (typeof window !== 'undefined') {
-      return localStorage.getItem('theme') || 'dark'
-    }
-    return 'dark'
-  })
+  const [theme, setTheme] = useState('dark')
+
+  useEffect(() => {
+    const storedTheme = localStorage.getItem('theme')
+    const initialTheme = storedTheme === 'light' ? 'light' : 'dark'
+    setTheme(initialTheme)
+    document.documentElement.setAttribute('data-theme', initialTheme)
+  }, [])
 
   const toggleTheme = () => {
     setTheme((current) => {
@@ -120,7 +122,7 @@ function App() {
     <div className="page-shell">
       <nav className="top-nav" aria-label="Primary navigation">
         <a href="#" className="nav-brand">
-          <img src="/ai-tools-logo.svg" alt="AI Tools logo" className="brand-logo" />
+          <img src={theme === 'dark' ? '/ai-tools-logo-light.svg' : '/ai-tools-logo-dark.svg'} alt="AI Tools logo" className="brand-logo" />
           <span className="brand-text mono-ibm">AI Tools</span>
         </a>
         <div className="nav-links">
@@ -129,7 +131,17 @@ function App() {
           <a href="#categories" className="nav-link mono-ibm">Categories</a>
           <a href="#about" className="nav-link mono-ibm">About</a>
           <button className="theme-toggle" onClick={toggleTheme} type="button" aria-label="Toggle theme">
-            {theme === 'dark' ? '☀️' : '🌙'}
+            <span className="theme-icon" aria-hidden="true">
+              {theme === 'dark' ? (
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path d="M12 3v2.5M12 18.5V21M4.5 12H3m18 0h-1.5M6.7 6.7l-1.06-1.06M18.36 18.36l-1.06-1.06M6.7 17.3l-1.06 1.06M18.36 5.64l-1.06 1.06M9.2 12a2.8 2.8 0 1 0 5.6 0 2.8 2.8 0 0 0-5.6 0Z" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" />
+                </svg>
+              ) : (
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path d="M20 14.8A8.2 8.2 0 0 1 9.2 4a8.2 8.2 0 1 0 10.8 10.8Z" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              )}
+            </span>
           </button>
         </div>
       </nav>
