@@ -4,16 +4,25 @@ const useTheme = () => {
   const [theme, setTheme] = useState('dark')
 
   useEffect(() => {
-    const storedTheme = localStorage.getItem('theme')
-    const initialTheme = storedTheme === 'light' ? 'light' : 'dark'
-    setTheme(initialTheme)
-    document.documentElement.setAttribute('data-theme', initialTheme)
+    try {
+      const storedTheme = window.localStorage.getItem('theme')
+      const initialTheme = storedTheme === 'light' ? 'light' : 'dark'
+      setTheme(initialTheme)
+      document.documentElement.setAttribute('data-theme', initialTheme)
+    } catch {
+      setTheme('dark')
+      document.documentElement.setAttribute('data-theme', 'dark')
+    }
   }, [])
 
   const toggleTheme = () => {
     setTheme((current) => {
       const nextTheme = current === 'dark' ? 'light' : 'dark'
-      localStorage.setItem('theme', nextTheme)
+      try {
+        window.localStorage.setItem('theme', nextTheme)
+      } catch {
+        // Ignore storage errors and keep the UI responsive.
+      }
       document.documentElement.setAttribute('data-theme', nextTheme)
       return nextTheme
     })
@@ -130,12 +139,6 @@ function App() {
           <a href="#featured" className="nav-link mono-ibm">Tools</a>
           <a href="#categories" className="nav-link mono-ibm">Categories</a>
           <a href="#about" className="nav-link mono-ibm">About</a>
-          <a href="#categories" className="nav-search-link" aria-label="Search tools">
-            <svg viewBox="0 0 24 24" fill="none">
-              <circle cx="11" cy="11" r="6.5" stroke="currentColor" strokeWidth="1.8" />
-              <path d="M16 16l4.5 4.5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
-            </svg>
-          </a>
           <button className="theme-toggle" onClick={toggleTheme} type="button" aria-label="Toggle theme">
             <span className="theme-icon" aria-hidden="true">
               {theme === 'dark' ? (

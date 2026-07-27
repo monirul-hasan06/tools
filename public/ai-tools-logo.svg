@@ -1,15 +1,14 @@
 <svg width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <rect width="256" height="256" rx="56" fill="#07111F"/>
-  <rect x="24" y="24" width="208" height="208" rx="40" fill="url(#paint0_linear)"/>
-  <rect x="80" y="68" width="96" height="70" rx="18" fill="#F8FAFF"/>
-  <rect x="94" y="54" width="68" height="20" rx="10" fill="#F8FAFF"/>
-  <rect x="94" y="146" width="68" height="20" rx="10" fill="#F8FAFF"/>
-  <rect x="72" y="82" width="20" height="42" rx="8" fill="#07111F" fill-opacity="0.18"/>
-  <rect x="164" y="82" width="20" height="42" rx="8" fill="#07111F" fill-opacity="0.18"/>
-  <circle cx="176" cy="92" r="24" fill="#F8FAFF"/>
-  <path d="M166 92h8M176 82v8M176 102v8" stroke="#07111F" stroke-width="7" stroke-linecap="round"/>
-  <path d="M162 92h8" stroke="#07111F" stroke-width="7" stroke-linecap="round"/>
-  <path d="M184 92h8" stroke="#07111F" stroke-width="7" stroke-linecap="round"/>
+  <rect width="256" height="256" rx="64" fill="#07111F"/>
+  <rect x="24" y="24" width="208" height="208" rx="44" fill="url(#paint0_linear)"/>
+  <rect x="58" y="70" width="140" height="116" rx="28" fill="#F8FAFF"/>
+  <path d="M92 96h72" stroke="#07111F" stroke-width="10" stroke-linecap="round"/>
+  <path d="M92 122h48" stroke="#07111F" stroke-width="10" stroke-linecap="round"/>
+  <path d="M164 122h10" stroke="#07111F" stroke-width="10" stroke-linecap="round"/>
+  <circle cx="174" cy="96" r="18" fill="#07111F"/>
+  <path d="M164 96h8M174 86v8M174 106v8" stroke="#F8FAFF" stroke-width="6" stroke-linecap="round"/>
+  <path d="M154 168c18 12 30 12 48 0" stroke="#07111F" stroke-width="7" stroke-linecap="round"/>
+  <text x="128" y="190" text-anchor="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="24" font-weight="700" fill="#07111F">AI TOOLS</text>
   <defs>
     <linearGradient id="paint0_linear" x1="24" y1="24" x2="232" y2="232" gradientUnits="userSpaceOnUse">
       <stop stop-color="#6C7CFF"/>
