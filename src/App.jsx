@@ -78,7 +78,7 @@ function App() {
 
       <footer className="footer">
         <div className="footer-content">
-          <p className="footer-title">Developed by</p>
+          <p className="footer-title">Built by</p>
           <a className="portfolio-link" href="https://me-at-portfolio-web.vercel.app" target="_blank" rel="noreferrer">
             <span className="portfolio-logo" aria-hidden="true">M</span>
             <span>My Portfolio</span>
@@ -88,7 +88,7 @@ function App() {
             <a href="https://www.facebook.com/techcanvix" target="_blank" rel="noreferrer">
               TechCanvix
             </a>{' '}
-            · Developer Team.
+            as part of the developer team.
           </p>
         </div>
       </footer>
