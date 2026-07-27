@@ -78,17 +78,23 @@ function App() {
 
       <footer className="footer">
         <div className="footer-content">
-          <p className="footer-title">Built by</p>
-          <a className="portfolio-link" href="https://me-at-portfolio-web.vercel.app" target="_blank" rel="noreferrer">
-            <span className="portfolio-logo" aria-hidden="true">M</span>
-            <span>My Portfolio</span>
-          </a>
-          <p className="footer-note">
-            I’m also collaborating with{' '}
-            <a href="https://www.facebook.com/techcanvix" target="_blank" rel="noreferrer">
-              TechCanvix
-            </a>{' '}
-            as part of the developer team.
+          <div className="footer-profile">
+            <a className="portfolio-link" href="https://me-at-portfolio-web.vercel.app" target="_blank" rel="noreferrer">
+              <span className="portfolio-logo" aria-hidden="true">M</span>
+              <span>Monirul Hasan Mithu</span>
+            </a>
+            <p className="footer-role">Web Developer &amp; CSE Undergraduate | Dhaka, Bangladesh</p>
+            <p className="footer-note">
+              I’m also collaborating with{' '}
+              <a href="https://www.facebook.com/techcanvix" target="_blank" rel="noreferrer">
+                TechCanvix
+              </a>{' '}
+              · Developer Team.
+            </p>
+          </div>
+          <div className="footer-divider" />
+          <p className="footer-copyright">
+            © {new Date().getFullYear()} <a href="https://www.facebook.com/monirul.hasan06" target="_blank" rel="noreferrer">Monirul Hasan Mithu</a>
           </p>
         </div>
       </footer>
