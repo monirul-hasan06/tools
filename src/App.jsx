@@ -16,11 +16,22 @@ const categories = ['All', 'Writing', 'Design', 'Coding', 'Productivity', 'Resea
 
 function App() {
   const [activeCategory, setActiveCategory] = useState('All')
+  const [searchTerm, setSearchTerm] = useState('')
 
   const visibleTools = useMemo(() => {
-    if (activeCategory === 'All') return tools
-    return tools.filter((tool) => tool.category === activeCategory)
-  }, [activeCategory])
+    const query = searchTerm.trim().toLowerCase()
+
+    return tools.filter((tool) => {
+      const matchesCategory = activeCategory === 'All' || tool.category === activeCategory
+      const matchesSearch =
+        query === '' ||
+        tool.name.toLowerCase().includes(query) ||
+        tool.description.toLowerCase().includes(query) ||
+        tool.category.toLowerCase().includes(query)
+
+      return matchesCategory && matchesSearch
+    })
+  }, [activeCategory, searchTerm])
 
   return (
     <div className="page-shell">
@@ -44,16 +55,29 @@ function App() {
             <h2>Browse by category</h2>
             <p>Choose the kind of task you want to improve.</p>
           </div>
-          <div className="chip-row">
-            {categories.map((category) => (
-              <button
-                key={category}
-                className={`chip ${activeCategory === category ? 'active' : ''}`}
-                onClick={() => setActiveCategory(category)}
-              >
-                {category}
-              </button>
-            ))}
+
+          <div className="filter-controls">
+            <label className="search-box">
+              <span aria-hidden="true">🔎</span>
+              <input
+                type="text"
+                placeholder="Search tools..."
+                value={searchTerm}
+                onChange={(event) => setSearchTerm(event.target.value)}
+              />
+            </label>
+
+            <div className="chip-row">
+              {categories.map((category) => (
+                <button
+                  key={category}
+                  className={`chip ${activeCategory === category ? 'active' : ''}`}
+                  onClick={() => setActiveCategory(category)}
+                >
+                  {category}
+                </button>
+              ))}
+            </div>
           </div>
         </section>
 

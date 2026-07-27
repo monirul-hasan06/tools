@@ -124,6 +124,36 @@ h1 {
   color: #9eb2c9;
 }
 
+.filter-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+}
+
+.search-box {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.08);
+  min-width: min(280px, 100%);
+}
+
+.search-box input {
+  border: none;
+  outline: none;
+  background: transparent;
+  color: #f7f9fc;
+  width: 100%;
+}
+
+.search-box input::placeholder {
+  color: #9eb2c9;
+}
+
 .chip-row {
   display: flex;
   flex-wrap: wrap;
