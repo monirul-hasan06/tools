@@ -35,10 +35,22 @@ function App() {
 
   return (
     <div className="page-shell">
+      <nav className="top-nav" aria-label="Primary navigation">
+        <a href="#" className="nav-brand">
+          <span className="brand-mark mono-ibm">AI</span>
+          <span className="brand-text mono-ibm">ToolsHub</span>
+        </a>
+        <div className="nav-links">
+          <a href="#tools" className="nav-link mono-ibm">Tools</a>
+          <a href="#categories" className="nav-link mono-ibm">Categories</a>
+          <a href="#footer" className="nav-link mono-ibm">About</a>
+        </div>
+      </nav>
+
       <header className="hero">
         <div className="hero-card">
-          <p className="eyebrow">AI Tools Directory</p>
-          <h1>Explore the best AI web tools in one place.</h1>
+          <p className="eyebrow mono-ibm">AI Tools Directory</p>
+          <h1 className="mono-jetbrains">Explore the best AI web tools in one place.</h1>
           <p className="hero-text">
             Discover useful AI tools for writing, design, coding, productivity, research, and more.
           </p>
@@ -75,7 +87,7 @@ function App() {
 
         <section className="featured-section">
           <div className="section-heading">
-            <h3>Featured tools</h3>
+            <h3 className="mono-cascadia">Featured tools</h3>
             <p>Popular picks for writing, design, and coding.</p>
           </div>
           <div className="featured-grid">
@@ -97,7 +109,7 @@ function App() {
 
         <section className="filters" id="categories">
           <div className="filters-header">
-            <h2>Browse by category</h2>
+            <h2 className="mono-cascadia">Browse by category</h2>
             <p>Choose the kind of task you want to improve.</p>
           </div>
 
@@ -145,7 +157,7 @@ function App() {
         </section>
       </main>
 
-      <footer className="footer">
+      <footer className="footer" id="footer">
         <div className="footer-content">
           <div className="footer-grid">
             <div className="footer-left">
