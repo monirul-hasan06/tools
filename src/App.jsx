@@ -91,10 +91,10 @@ function App() {
       <nav className="top-nav" aria-label="Primary navigation">
         <a href="#" className="nav-brand">
           <span className="brand-mark mono-ibm">AI</span>
-          <span className="brand-text mono-ibm">ToolsHub</span>
+          <span className="brand-text mono-ibm">AI Tools</span>
         </a>
         <div className="nav-links">
-          <a href="#tools" className="nav-link mono-ibm">Tools</a>
+          <a href="#featured" className="nav-link mono-ibm">Tools</a>
           <a href="#categories" className="nav-link mono-ibm">Categories</a>
           <a href="#about" className="nav-link mono-ibm">About</a>
         </div>
@@ -102,10 +102,9 @@ function App() {
 
       <header className="hero">
         <div className="hero-card">
-          <p className="eyebrow mono-ibm">AI Tools Directory</p>
-          <h1 className="mono-jetbrains">Explore the best AI web tools in one place.</h1>
+          <h1 className="mono-jetbrains">AI Tools</h1>
           <p className="hero-text">
-            Discover useful AI tools for writing, design, coding, productivity, research, and more.
+            A resource of web based AI tools collection for writing, design, coding, productivity, research, and more.
           </p>
           <div className="hero-actions">
             <a href="#tools" className="btn btn-primary">Browse Tools</a>
@@ -138,7 +137,7 @@ function App() {
           </div>
         </section>
 
-        <section className="featured-section">
+        <section className="featured-section" id="featured">
           <div className="section-heading">
             <h3 className="mono-cascadia">Featured tools</h3>
             <p>Popular picks for writing, design, and coding.</p>
@@ -219,16 +218,16 @@ function App() {
             <div className="about-grid">
               <div className="about-copy">
                 <p>
-                  This directory brings together useful AI tools across writing, design, coding, research, productivity, and video creation.
-                  It is built to help you discover the right tool quickly without jumping through dozens of scattered websites.
+                  Here you will find a curated collection of web-based AI tools for writing, design, coding, research, productivity, and video creation.
+                  This site is made to help users discover the right AI tool quickly without visiting many different websites.
                 </p>
                 <p>
-                  The list is inspired by large AI tool collections and directories, including curated repositories focused on over 7,700 tools and 300+ AI agents.
+                  Whether you are a student, creator, developer, or business owner, this resource makes it easier to explore useful AI platforms in one place.
                 </p>
                 <ul className="about-list">
-                  <li>Browse by category or search instantly</li>
-                  <li>Find featured picks for common workflows</li>
-                  <li>Discover both general assistants and specialized tools</li>
+                  <li>Discover tools by category and purpose</li>
+                  <li>Explore featured AI tools for common tasks</li>
+                  <li>Find useful web-based AI resources in one simple directory</li>
                 </ul>
               </div>
 
