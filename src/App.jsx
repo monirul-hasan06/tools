@@ -81,14 +81,11 @@ function App() {
           <div className="footer-grid">
             <div className="footer-left">
               <p className="footer-copyright small-text">
-                © {new Date().getFullYear()} <a href="https://www.facebook.com/monirul.hasan06" target="_blank" rel="noreferrer">Monirul Hasan Mithu</a>
+                © {new Date().getFullYear()} <a href="https://me-at-portfolio-web.vercel.app" target="_blank" rel="noreferrer">Monirul Hasan Mithu</a>
               </p>
             </div>
 
             <div className="footer-center">
-              <a className="portfolio-link" href="https://me-at-portfolio-web.vercel.app" target="_blank" rel="noreferrer">
-                Monirul Hasan Mithu
-              </a>
               <p className="footer-role">Web Developer &amp; CSE Undergraduate | Dhaka, Bangladesh</p>
             </div>
 
