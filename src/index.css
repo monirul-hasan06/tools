@@ -52,6 +52,12 @@ body {
     var(--bg);
   color: var(--text);
   transition: background 0.25s ease, color 0.25s ease;
+  overflow-x: hidden;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
 }
 
 #root {
@@ -62,6 +68,7 @@ body {
   width: min(1180px, calc(100% - 32px));
   margin: 0 auto;
   padding-bottom: 40px;
+  padding-top: 0;
 }
 
 .top-nav {
@@ -69,7 +76,7 @@ body {
   align-items: center;
   justify-content: space-between;
   padding: 18px 22px;
-  margin-top: 16px;
+  margin-top: 0;
   border: 1px solid var(--border);
   border-radius: 999px;
   background: var(--bg-soft);
@@ -90,11 +97,13 @@ body {
 }
 
 .brand-logo {
-  width: 40px;
-  height: 40px;
+  width: 42px;
+  height: 42px;
   border-radius: 14px;
   object-fit: cover;
-  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.16);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.16);
+  background: linear-gradient(135deg, rgba(108, 124, 255, 0.22), rgba(0, 209, 255, 0.2));
+  padding: 2px;
 }
 
 .brand-text {
@@ -280,7 +289,7 @@ h1 {
 .stats-card strong {
   display: block;
   font-size: 1.15rem;
-  color: white;
+  color: var(--text);
 }
 
 .stats-card span {
@@ -399,8 +408,9 @@ h1 {
   min-height: 70px;
 }
 
-.featured-card a {
-  color: #d6dcff;
+.featured-card a,
+.tool-card a {
+  color: var(--text);
   font-weight: 700;
   text-decoration: none;
 }
@@ -433,14 +443,14 @@ h1 {
 .search-box {
   display: flex;
   align-items: center;
-  gap: 8px;
-  padding: 10px 14px;
+  gap: 10px;
+  padding: 11px 14px;
   border-radius: 999px;
   border: 1px solid var(--border);
   background: var(--panel);
   min-width: min(320px, 100%);
-  box-shadow: inset 0 1px 0 rgba(255,255,255,0.1);
-  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.12);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease, background 0.2s ease;
 }
 
 .search-box:focus-within {
@@ -454,11 +464,15 @@ h1 {
   place-items: center;
   color: var(--muted);
   transition: color 0.2s ease, transform 0.2s ease;
+  background: linear-gradient(135deg, rgba(108, 124, 255, 0.16), rgba(0, 209, 255, 0.16));
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
 }
 
 .search-icon svg {
-  width: 18px;
-  height: 18px;
+  width: 16px;
+  height: 16px;
 }
 
 .search-box:focus-within .search-icon {
@@ -476,6 +490,10 @@ h1 {
 
 .search-box input::placeholder {
   color: var(--muted);
+}
+
+.search-box input:focus {
+  color: var(--text);
 }
 
 .chip-row {
@@ -552,11 +570,6 @@ h1 {
   min-height: 70px;
 }
 
-.tool-card a {
-  color: #d6dcff;
-  font-weight: 700;
-  text-decoration: none;
-}
 
 .footer {
   padding: 0 0 40px;
