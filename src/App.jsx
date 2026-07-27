@@ -1,5 +1,25 @@
 import { useMemo, useState } from 'react'
 
+const useTheme = () => {
+  const [theme, setTheme] = useState(() => {
+    if (typeof window !== 'undefined') {
+      return localStorage.getItem('theme') || 'dark'
+    }
+    return 'dark'
+  })
+
+  const toggleTheme = () => {
+    setTheme((current) => {
+      const nextTheme = current === 'dark' ? 'light' : 'dark'
+      localStorage.setItem('theme', nextTheme)
+      document.documentElement.setAttribute('data-theme', nextTheme)
+      return nextTheme
+    })
+  }
+
+  return { theme, toggleTheme }
+}
+
 const getLogoUrl = (url) => {
   try {
     const hostname = new URL(url).hostname.replace(/^www\./, '')
@@ -79,6 +99,7 @@ const categories = ['All', 'Writing', 'Design', 'Coding', 'Productivity', 'Resea
 function App() {
   const [activeCategory, setActiveCategory] = useState('All')
   const [searchTerm, setSearchTerm] = useState('')
+  const { theme, toggleTheme } = useTheme()
 
   const visibleTools = useMemo(() => {
     const query = searchTerm.trim().toLowerCase()
@@ -103,9 +124,13 @@ function App() {
           <span className="brand-text mono-ibm">AI Tools</span>
         </a>
         <div className="nav-links">
+          <a href="#" className="nav-link mono-ibm">Home</a>
           <a href="#featured" className="nav-link mono-ibm">Tools</a>
           <a href="#categories" className="nav-link mono-ibm">Categories</a>
           <a href="#about" className="nav-link mono-ibm">About</a>
+          <button className="theme-toggle" onClick={toggleTheme} type="button" aria-label="Toggle theme">
+            {theme === 'dark' ? '☀️' : '🌙'}
+          </button>
         </div>
       </nav>
 
@@ -176,7 +201,11 @@ function App() {
 
           <div className="filter-controls">
             <label className="search-box">
-              <span aria-hidden="true">🔎</span>
+              <span className="search-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path d="M11 4a7 7 0 1 0 0 14 7 7 0 0 0 0-14Zm0 0 8 8" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+                </svg>
+              </span>
               <input
                 type="text"
                 placeholder="Search tools..."
