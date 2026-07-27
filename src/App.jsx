@@ -163,7 +163,6 @@ function App() {
           </p>
           <div className="hero-actions">
             <a href="#tools" className="btn btn-primary">Browse Tools</a>
-            <a href="#categories" className="btn btn-secondary">Explore Categories</a>
           </div>
         </div>
       </header>
