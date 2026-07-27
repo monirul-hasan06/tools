@@ -1,5 +1,14 @@
 import { useMemo, useState } from 'react'
 
+const getLogoUrl = (url) => {
+  try {
+    const hostname = new URL(url).hostname.replace(/^www\./, '')
+    return `https://www.google.com/s2/favicons?domain=${hostname}&sz=64`
+  } catch {
+    return '/ai-tools-logo.svg'
+  }
+}
+
 const tools = [
   { name: 'ChatGPT', category: 'Writing', description: 'Great for writing, brainstorming, and everyday AI help.', link: 'https://chatgpt.com', icon: '✍️', featured: true },
   { name: 'Gemini', category: 'General', description: 'A strong all-round assistant for research, writing, and productivity.', link: 'https://gemini.google.com/', icon: '✨', featured: true },
@@ -90,7 +99,7 @@ function App() {
     <div className="page-shell">
       <nav className="top-nav" aria-label="Primary navigation">
         <a href="#" className="nav-brand">
-          <span className="brand-mark mono-ibm">AI</span>
+          <img src="/ai-tools-logo.svg" alt="AI Tools logo" className="brand-logo" />
           <span className="brand-text mono-ibm">AI Tools</span>
         </a>
         <div className="nav-links">
@@ -146,7 +155,7 @@ function App() {
             {tools.filter((tool) => tool.featured).map((tool) => (
               <article className="featured-card" key={tool.name}>
                 <div className="tool-card-top">
-                  <div className="tool-icon">{tool.icon}</div>
+                  <img className="tool-icon" src={getLogoUrl(tool.link)} alt={`${tool.name} logo`} />
                   <span className="tool-tag featured-badge">Popular</span>
                 </div>
                 <h4>{tool.name}</h4>
@@ -195,7 +204,7 @@ function App() {
             {visibleTools.map((tool) => (
               <article className="tool-card" key={tool.name}>
                 <div className="tool-card-top">
-                  <div className="tool-icon">{tool.icon}</div>
+                  <img className="tool-icon" src={getLogoUrl(tool.link)} alt={`${tool.name} logo`} />
                   <span className="tool-tag">{tool.category}</span>
                 </div>
                 <h3>{tool.name}</h3>
@@ -210,37 +219,28 @@ function App() {
 
         <section className="about-section" id="about">
           <div className="about-card">
-            <div className="section-heading">
-              <h3 className="mono-cascadia">About this directory</h3>
-              <p>Curated AI tools for builders, creators, and researchers.</p>
+            <div className="about-intro">
+              <h3 className="mono-cascadia">About AI Tools</h3>
+              <p>
+                This site is a curated resource for discovering web-based AI tools in one simple place.
+              </p>
             </div>
 
             <div className="about-grid">
-              <div className="about-copy">
-                <p>
-                  Here you will find a curated collection of web-based AI tools for writing, design, coding, research, productivity, and video creation.
-                  This site is made to help users discover the right AI tool quickly without visiting many different websites.
-                </p>
-                <p>
-                  Whether you are a student, creator, developer, or business owner, this resource makes it easier to explore useful AI platforms in one place.
-                </p>
+              <div className="about-panel">
+                <h4 className="mono-ibm">What you will find here</h4>
                 <ul className="about-list">
-                  <li>Discover tools by category and purpose</li>
-                  <li>Explore featured AI tools for common tasks</li>
-                  <li>Find useful web-based AI resources in one simple directory</li>
+                  <li>AI tools for writing, design, coding, research, and productivity</li>
+                  <li>Featured picks for everyday tasks and creative work</li>
+                  <li>A quick way to explore useful web-based AI platforms</li>
                 </ul>
               </div>
 
-              <div className="about-links">
-                <h4 className="mono-ibm">Popular AI directories</h4>
-                <ul>
-                  <li><a href="https://1000.tools/" target="_blank" rel="noreferrer">1000 Tools</a></li>
-                  <li><a href="https://futurepedia.io/" target="_blank" rel="noreferrer">Futurepedia</a></li>
-                  <li><a href="https://aitoolboard.com/" target="_blank" rel="noreferrer">AI Tool Board</a></li>
-                  <li><a href="https://aitoolsdirectory.com/" target="_blank" rel="noreferrer">AI Tools Directory</a></li>
-                  <li><a href="https://agenthunter.io/" target="_blank" rel="noreferrer">AgentHunter</a></li>
-                  <li><a href="https://aiagentsbase.com/" target="_blank" rel="noreferrer">AI Agents Base</a></li>
-                </ul>
+              <div className="about-panel">
+                <h4 className="mono-ibm">Why this directory exists</h4>
+                <p>
+                  It helps users save time by gathering useful AI platforms in one clean directory instead of searching across many scattered websites.
+                </p>
               </div>
             </div>
           </div>
