@@ -2,17 +2,70 @@ import { useMemo, useState } from 'react'
 
 const tools = [
   { name: 'ChatGPT', category: 'Writing', description: 'Great for writing, brainstorming, and everyday AI help.', link: 'https://chatgpt.com', icon: '✍️', featured: true },
+  { name: 'Gemini', category: 'General', description: 'A strong all-round assistant for research, writing, and productivity.', link: 'https://gemini.google.com/', icon: '✨', featured: true },
+  { name: 'DeepSeek', category: 'General', description: 'Fast and flexible for coding, explanation, and content tasks.', link: 'https://www.deepseek.com/', icon: '🧩' },
+  { name: 'Grok', category: 'General', description: 'Useful for conversational assistance and quick knowledge discovery.', link: 'https://x.ai/', icon: '⚡' },
+  { name: 'Microsoft Copilot', category: 'General', description: 'A polished assistant that helps with searches, writing, and daily work.', link: 'https://www.microsoft.com/en-us/microsoft-copilot', icon: '🪄' },
+  { name: 'Poe', category: 'General', description: 'Explore multiple models in one polished chat experience.', link: 'https://poe.com/', icon: '💬' },
+  { name: 'HuggingChat', category: 'General', description: 'A community-friendly chat experience for trying AI models.', link: 'https://huggingface.co/chat/', icon: '🤖' },
   { name: 'Perplexity', category: 'Research', description: 'Helpful for fast research and clear answers.', link: 'https://www.perplexity.ai', icon: '🔍' },
   { name: 'Claude', category: 'Writing', description: 'Excellent for long-form writing and thoughtful AI conversations.', link: 'https://claude.ai', icon: '🧠' },
   { name: 'Canva AI', category: 'Design', description: 'Create presentations and graphics with AI assistance.', link: 'https://www.canva.com/ai-image-generator/', icon: '🎨' },
   { name: 'Midjourney', category: 'Design', description: 'Generate impressive images from text prompts.', link: 'https://www.midjourney.com', icon: '🖼️', featured: true },
   { name: 'DALL·E', category: 'Design', description: 'Generate unique images from detailed descriptions.', link: 'https://openai.com/dall-e-3', icon: '✨' },
+  { name: 'Leonardo AI', category: 'Design', description: 'Great for detailed image generation and creative visual workflows.', link: 'https://leonardo.ai/', icon: '🖌️' },
+  { name: 'Stable Diffusion', category: 'Design', description: 'A powerful open image generation platform for artists and creators.', link: 'https://stability.ai/stable-diffusion', icon: '🌀' },
+  { name: 'Ideogram', category: 'Design', description: 'Create polished text-in-image visuals with strong typography support.', link: 'https://ideogram.ai/', icon: '📝' },
+  { name: 'Adobe Firefly', category: 'Design', description: 'Useful for generating and editing creative assets inside Adobe workflows.', link: 'https://www.adobe.com/products/firefly.html', icon: '🔥' },
   { name: 'GitHub Copilot', category: 'Coding', description: 'Boost coding speed with smart code suggestions.', link: 'https://github.com/features/copilot', icon: '💻', featured: true },
-  { name: 'Notion AI', category: 'Productivity', description: 'Organize work and generate notes in one place.', link: 'https://www.notion.so/product/ai', icon: '📅' },
-  { name: 'Runway', category: 'Productivity', description: 'Create and edit videos with AI-powered tools.', link: 'https://runwayml.com', icon: '🎬' },
+  { name: 'Cursor', category: 'Coding', description: 'An AI-first coding editor designed for faster development.', link: 'https://www.cursor.com/', icon: '⌨️', featured: true },
+  { name: 'Windsurf', category: 'Coding', description: 'A modern IDE experience with AI-assisted workflows.', link: 'https://windsurf.com/', icon: '🌊' },
+  { name: 'Replit', category: 'Coding', description: 'Build, test, and collaborate with AI from the browser.', link: 'https://replit.com/', icon: '🧪' },
+  { name: 'Bolt.new', category: 'Coding', description: 'Quickly turn ideas into working web apps using AI prompts.', link: 'https://bolt.new/', icon: '⚙️' },
+  { name: 'Lovable', category: 'Coding', description: 'Generate polished app experiences with AI-assisted building.', link: 'https://lovable.dev/', icon: '💡' },
+  { name: 'v0', category: 'Coding', description: 'Create UI components and frontend interfaces with natural language.', link: 'https://v0.dev/', icon: '🧱' },
+  { name: 'Cline', category: 'Coding', description: 'An AI coding assistant focused on developer productivity.', link: 'https://cline.bot/', icon: '🛠️' },
+  { name: 'Aider', category: 'Coding', description: 'A command-line AI coding partner for software developers.', link: 'https://aider.chat/', icon: '🧠' },
+  { name: 'Codeium', category: 'Coding', description: 'Fast AI completion and coding support for many languages.', link: 'https://codeium.com/', icon: '⚡' },
+  { name: 'Sourcegraph Cody', category: 'Coding', description: 'AI assistance tailored for searching and editing large codebases.', link: 'https://sourcegraph.com/cody', icon: '🔎' },
+  { name: 'Amazon Q Developer', category: 'Coding', description: 'Helpful for developer workflows and AWS-related coding tasks.', link: 'https://aws.amazon.com/q/developer/', icon: '☁️' },
+  { name: 'Google Code Assist', category: 'Coding', description: 'Useful AI support for coding and software development workflows.', link: 'https://cloud.google.com/products/ai/code-assist', icon: '🧭' },
+  { name: 'Grammarly', category: 'Writing', description: 'Polish grammar, clarity, and tone in your writing instantly.', link: 'https://www.grammarly.com/', icon: '✍️' },
+  { name: 'Jasper', category: 'Writing', description: 'Create marketing copy and content at scale with AI help.', link: 'https://www.jasper.ai/', icon: '📝' },
+  { name: 'Copy.ai', category: 'Writing', description: 'Generate short-form content quickly for blogs, ads, and social posts.', link: 'https://www.copy.ai/', icon: '📢' },
+  { name: 'Quillbot', category: 'Writing', description: 'Paraphrase and refine text with an easy-to-use AI editor.', link: 'https://quillbot.com/', icon: '🪶' },
+  { name: 'Sudowrite', category: 'Writing', description: 'Great for fiction writing and storytelling with AI support.', link: 'https://sudowrite.com/', icon: '📚' },
+  { name: 'Rytr', category: 'Writing', description: 'Create marketing content and polished copy in minutes.', link: 'https://rytr.me/', icon: '⚪' },
+  { name: 'Jenni AI', category: 'Writing', description: 'Support writing workflows with AI-driven drafting and editing.', link: 'https://jenni.ai/', icon: '📄' },
+  { name: 'Runway', category: 'Video', description: 'Create and edit videos with AI-powered tools.', link: 'https://runwayml.com', icon: '🎬' },
+  { name: 'HeyGen', category: 'Video', description: 'Generate realistic AI video presenters and talking avatars.', link: 'https://www.heygen.com/', icon: '🎥' },
+  { name: 'Synthesia', category: 'Video', description: 'Create multilingual video content with AI-generated presenters.', link: 'https://www.synthesia.io/', icon: '🎞️' },
+  { name: 'Descript', category: 'Video', description: 'Edit audio and video with text-based AI workflows.', link: 'https://www.descript.com/', icon: '🎙️' },
+  { name: 'ElevenLabs', category: 'Video', description: 'Create natural-sounding voiceovers and audio content.', link: 'https://elevenlabs.io/', icon: '🔊' },
+  { name: 'Murf AI', category: 'Video', description: 'Generate professional voiceovers and narration with AI voices.', link: 'https://murf.ai/', icon: '🎤' },
+  { name: 'Suno AI', category: 'Video', description: 'Turn ideas into music and audio with AI generation.', link: 'https://suno.com/', icon: '🎵' },
+  { name: 'Pika Labs', category: 'Video', description: 'Create short AI-generated videos from prompts and images.', link: 'https://pika.art/', icon: '📽️' },
+  { name: 'NotebookLM', category: 'Research', description: 'A smart research workspace for summarizing and exploring notes.', link: 'https://notebooklm.google/', icon: '📘', featured: true },
+  { name: 'Elicit', category: 'Research', description: 'Find relevant papers and research insights with AI support.', link: 'https://elicit.com/', icon: '🧪' },
+  { name: 'Consensus', category: 'Research', description: 'Search evidence-backed answers from scientific literature.', link: 'https://consensus.app/', icon: '✅' },
+  { name: 'ResearchRabbit', category: 'Research', description: 'Map and discover academic literature with AI-powered recommendations.', link: 'https://www.researchrabbit.ai/', icon: '🗺️' },
+  { name: 'Scite', category: 'Research', description: 'Discover how papers are cited and supported by AI analysis.', link: 'https://scite.ai/', icon: '📊' },
+  { name: 'Scholarcy', category: 'Research', description: 'Summarize academic papers into concise, useful overviews.', link: 'https://www.scholarcy.com/', icon: '📚' },
+  { name: 'Rayyan', category: 'Research', description: 'Organize and screen research work with AI-assisted review.', link: 'https://www.rayyan.ai/', icon: '🔬' },
+  { name: 'Airtable', category: 'Productivity', description: 'Organize projects and data with AI-enhanced planning workflows.', link: 'https://airtable.com/', icon: '📋' },
+  { name: 'Miro', category: 'Productivity', description: 'Collaborate visually and brainstorm with AI-powered boards.', link: 'https://miro.com/', icon: '🧠' },
+  { name: 'Gamma', category: 'Productivity', description: 'Turn ideas into presentations and docs in seconds.', link: 'https://gamma.app/', icon: '📈' },
+  { name: 'n8n', category: 'Productivity', description: 'Automate tasks and connect apps with flexible AI workflows.', link: 'https://n8n.io/', icon: '🔁' },
+  { name: 'Zapier', category: 'Productivity', description: 'Connect apps and automate repetitive work with ease.', link: 'https://zapier.com/', icon: '🔗' },
+  { name: 'Make', category: 'Productivity', description: 'Build visual automations for marketing, operations, and productivity.', link: 'https://www.make.com/', icon: '⚒️' },
+  { name: 'Otter.ai', category: 'Productivity', description: 'Transcribe meetings and conversations with AI accuracy.', link: 'https://otter.ai/', icon: '🗣️' },
+  { name: 'Fireflies.ai', category: 'Productivity', description: 'Capture notes and action items from meetings automatically.', link: 'https://fireflies.ai/', icon: '📝' },
+  { name: 'Motion', category: 'Productivity', description: 'Plan work and schedules with AI-driven productivity support.', link: 'https://www.usemotion.com/', icon: '⏰' },
+  { name: 'Monica', category: 'Productivity', description: 'Stay organized and interact with AI in everyday workflows.', link: 'https://monica.im/', icon: '🧾' },
+  { name: 'Bluedot', category: 'Productivity', description: 'Capture and organize knowledge from meetings and conversations.', link: 'https://www.bluedot.ai/', icon: '🔵' },
 ]
 
-const categories = ['All', 'Writing', 'Design', 'Coding', 'Productivity', 'Research']
+const categories = ['All', 'Writing', 'Design', 'Coding', 'Productivity', 'Research', 'General', 'Video']
 
 function App() {
   const [activeCategory, setActiveCategory] = useState('All')
@@ -43,7 +96,7 @@ function App() {
         <div className="nav-links">
           <a href="#tools" className="nav-link mono-ibm">Tools</a>
           <a href="#categories" className="nav-link mono-ibm">Categories</a>
-          <a href="#footer" className="nav-link mono-ibm">About</a>
+          <a href="#about" className="nav-link mono-ibm">About</a>
         </div>
       </nav>
 
@@ -153,6 +206,44 @@ function App() {
                 </a>
               </article>
             ))}
+          </div>
+        </section>
+
+        <section className="about-section" id="about">
+          <div className="about-card">
+            <div className="section-heading">
+              <h3 className="mono-cascadia">About this directory</h3>
+              <p>Curated AI tools for builders, creators, and researchers.</p>
+            </div>
+
+            <div className="about-grid">
+              <div className="about-copy">
+                <p>
+                  This directory brings together useful AI tools across writing, design, coding, research, productivity, and video creation.
+                  It is built to help you discover the right tool quickly without jumping through dozens of scattered websites.
+                </p>
+                <p>
+                  The list is inspired by large AI tool collections and directories, including curated repositories focused on over 7,700 tools and 300+ AI agents.
+                </p>
+                <ul className="about-list">
+                  <li>Browse by category or search instantly</li>
+                  <li>Find featured picks for common workflows</li>
+                  <li>Discover both general assistants and specialized tools</li>
+                </ul>
+              </div>
+
+              <div className="about-links">
+                <h4 className="mono-ibm">Popular AI directories</h4>
+                <ul>
+                  <li><a href="https://1000.tools/" target="_blank" rel="noreferrer">1000 Tools</a></li>
+                  <li><a href="https://futurepedia.io/" target="_blank" rel="noreferrer">Futurepedia</a></li>
+                  <li><a href="https://aitoolboard.com/" target="_blank" rel="noreferrer">AI Tool Board</a></li>
+                  <li><a href="https://aitoolsdirectory.com/" target="_blank" rel="noreferrer">AI Tools Directory</a></li>
+                  <li><a href="https://agenthunter.io/" target="_blank" rel="noreferrer">AgentHunter</a></li>
+                  <li><a href="https://aiagentsbase.com/" target="_blank" rel="noreferrer">AI Agents Base</a></li>
+                </ul>
+              </div>
+            </div>
           </div>
         </section>
       </main>
