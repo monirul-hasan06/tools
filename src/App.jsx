@@ -1,13 +1,13 @@
 import { useMemo, useState } from 'react'
 
 const tools = [
-  { name: 'ChatGPT', category: 'Writing', description: 'Great for writing, brainstorming, and everyday AI help.', link: 'https://chatgpt.com', icon: '✍️' },
+  { name: 'ChatGPT', category: 'Writing', description: 'Great for writing, brainstorming, and everyday AI help.', link: 'https://chatgpt.com', icon: '✍️', featured: true },
   { name: 'Perplexity', category: 'Research', description: 'Helpful for fast research and clear answers.', link: 'https://www.perplexity.ai', icon: '🔍' },
   { name: 'Claude', category: 'Writing', description: 'Excellent for long-form writing and thoughtful AI conversations.', link: 'https://claude.ai', icon: '🧠' },
   { name: 'Canva AI', category: 'Design', description: 'Create presentations and graphics with AI assistance.', link: 'https://www.canva.com/ai-image-generator/', icon: '🎨' },
-  { name: 'Midjourney', category: 'Design', description: 'Generate impressive images from text prompts.', link: 'https://www.midjourney.com', icon: '🖼️' },
+  { name: 'Midjourney', category: 'Design', description: 'Generate impressive images from text prompts.', link: 'https://www.midjourney.com', icon: '🖼️', featured: true },
   { name: 'DALL·E', category: 'Design', description: 'Generate unique images from detailed descriptions.', link: 'https://openai.com/dall-e-3', icon: '✨' },
-  { name: 'GitHub Copilot', category: 'Coding', description: 'Boost coding speed with smart code suggestions.', link: 'https://github.com/features/copilot', icon: '💻' },
+  { name: 'GitHub Copilot', category: 'Coding', description: 'Boost coding speed with smart code suggestions.', link: 'https://github.com/features/copilot', icon: '💻', featured: true },
   { name: 'Notion AI', category: 'Productivity', description: 'Organize work and generate notes in one place.', link: 'https://www.notion.so/product/ai', icon: '📅' },
   { name: 'Runway', category: 'Productivity', description: 'Create and edit videos with AI-powered tools.', link: 'https://runwayml.com', icon: '🎬' },
 ]
@@ -50,6 +50,51 @@ function App() {
       </header>
 
       <main>
+        <section className="intro-strip">
+          <div className="intro-card">
+            <h2>Discover the right AI tool for every task</h2>
+            <p>
+              This collection helps you quickly explore writing, design, coding, productivity, and research tools in one clean place.
+            </p>
+          </div>
+          <div className="stats-card">
+            <div>
+              <strong>9+</strong>
+              <span>AI tools</span>
+            </div>
+            <div>
+              <strong>6</strong>
+              <span>Categories</span>
+            </div>
+            <div>
+              <strong>Fast</strong>
+              <span>Search</span>
+            </div>
+          </div>
+        </section>
+
+        <section className="featured-section">
+          <div className="section-heading">
+            <h3>Featured tools</h3>
+            <p>Popular picks for writing, design, and coding.</p>
+          </div>
+          <div className="featured-grid">
+            {tools.filter((tool) => tool.featured).map((tool) => (
+              <article className="featured-card" key={tool.name}>
+                <div className="tool-card-top">
+                  <div className="tool-icon">{tool.icon}</div>
+                  <span className="tool-tag featured-badge">Popular</span>
+                </div>
+                <h4>{tool.name}</h4>
+                <p>{tool.description}</p>
+                <a href={tool.link} target="_blank" rel="noreferrer">
+                  Visit tool →
+                </a>
+              </article>
+            ))}
+          </div>
+        </section>
+
         <section className="filters" id="categories">
           <div className="filters-header">
             <h2>Browse by category</h2>
